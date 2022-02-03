@@ -13,7 +13,7 @@ enable_debug = False
 sort_by_date_then_patreon = False
 number_of_parallel_downloads = int(os.environ.get('TG_MAX_PARALLEL', 16))
 watch_path = r"Z:\TelegramDownloads"  # this should be your telegram download directory
-download_path = r"Z:\sortedprinterdownloads"  # this is the place you want to move the files to
+target_path = r"Z:\sortedprinterdownloads"  # this is the place you want to move the files to
 # Create a queue that we will use to store our downloads.
 queue = asyncio.Queue(30)
 
@@ -50,11 +50,11 @@ def move_file(filepath):
             os.rename(filepath, dashPath.lower())
             filepath = dashPath
         filename = os.path.basename(filepath)
-        os.makedirs(download_path, exist_ok=True)
+        os.makedirs(target_path, exist_ok=True)
         if "monthly" in filename.lower() and "-" in filename:
             split = filename.split('-')
             patreon = split[1]
-            monthly_path = os.path.join(download_path, "monthly")
+            monthly_path = os.path.join(target_path, "monthly")
             if sort_by_date_then_patreon:
                 date = os.path.splitext(split[2])[0]
                 monthly_path = os.path.join(monthly_path, date.strip())
@@ -63,14 +63,14 @@ def move_file(filepath):
             final_path = os.path.join(patreon_path, filename)
 
         elif "kickstarter" in filename.lower() and "-" in filename:
-            kickstarter_path = os.path.join(download_path, "kickstarter")
+            kickstarter_path = os.path.join(target_path, "kickstarter")
             os.makedirs(kickstarter_path.lower(), exist_ok=True)
             final_path = os.path.join(kickstarter_path, filename)
 
         elif "trove" in filename.lower() and "-" in filename:
             split = filename.split('-')
             creator = split[1]
-            trove_path = os.path.join(download_path, "trove")
+            trove_path = os.path.join(target_path, "trove")
             creator_path = os.path.join(trove_path, creator.strip())
             os.makedirs(creator_path.lower(), exist_ok=True)
             final_path = os.path.join(creator_path, filename)
@@ -78,13 +78,13 @@ def move_file(filepath):
         elif "warhammer+" in filename.lower() and "-" in filename:
             split = filename.split('-')
             creator = split[1]
-            trove_path = os.path.join(download_path, "warhammer+")
+            trove_path = os.path.join(target_path, "warhammer+")
             creator_path = os.path.join(trove_path, creator.strip())
             os.makedirs(creator_path.lower(), exist_ok=True)
             final_path = os.path.join(creator_path, filename)
 
         else:
-            unsorted_path = os.path.join(download_path, "unsorted")
+            unsorted_path = os.path.join(target_path, "unsorted")
             os.makedirs(unsorted_path.lower(), exist_ok=True)
             final_path = os.path.join(unsorted_path, filename)
 
@@ -155,8 +155,8 @@ class SomeEventHandler(FileSystemEventHandler):
 
 if(os.path.exists(watch_path) is False):
     log("watch path %s not found",watch_path)
-if(os.path.exists(download_path) is False):
-    log("download path %s not found",download_path)
+if(os.path.exists(target_path) is False):
+    log("download path %s not found",target_path)
 
 move_existing_files()
 loop = asyncio.get_event_loop()
