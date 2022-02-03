@@ -23,11 +23,11 @@ will be moved to
 
 `c:\output\kickstarter\kickstarter-fantasyfootball.zip`
 
-`c:\input\trove-cgtrader-darkangelsstuff.zip`
+`c:\input\trove-creatorname-darkangelsstuff.zip`
 
 will be moved to 
 
-`c:\output\trove\cgtrader\trove-cgtrader-darkangelsstuff.zip`
+`c:\output\trove\creatorname\trove-creatorname-darkangelsstuff.zip`
 
 `c:\input\icantnamethingscorrectly.png`
 
