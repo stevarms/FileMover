@@ -17,6 +17,24 @@ will be moved to
 
 `c:\output\monthly\code2\monthly-code2-2022.01-building.zip`
 
+`c:\input\kickstarter-fantasyfootball.zip`
+
+will be moved to 
+
+`c:\output\kickstarter\kickstarter-fantasyfootball.zip`
+
+`c:\input\trove-cgtrader-darkangelsstuff.zip`
+
+will be moved to 
+
+`c:\output\trove\cgtrader\trove-cgtrader-darkangelsstuff.zip`
+
+`c:\input\icantnamethingscorrectly.png`
+
+will be moved to 
+
+`c:\output\unsorted\icantnamethingscorrectly.png`
+
 # Getting Started
 1. [install python 3](https://www.python.org/downloads/)
 2. update pip `py -m pip install --upgrade pip`
