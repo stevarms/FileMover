@@ -46,7 +46,7 @@ will be moved to
     - settings -> advanced -> download path -> custom folder (this will be the same as watch_path above)
     - settings -> advanced -> manage local storage -> increase the total size limit & cache limit to 10GB
     - settings -> advanced -> In Groups -> increase Limit by Size to 2000MB also make sure files and photos are checked
-6. run mover.py (either by double clicking or open a cmd window and navigate to the location
+6. run mover.py (either by double clicking or open a cmd window and navigate to the location)
 
 # Known issues
 * the multithreadding doesnt really work
