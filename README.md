@@ -51,3 +51,6 @@ will be moved to
 # Known issues
 * the multithreadding doesnt really work
 * This likely wont work on mac or linux
+
+# Planned Features
+* auto scroll for telegram
