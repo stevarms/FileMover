@@ -4,12 +4,14 @@ import glob
 import string
 import time
 import asyncio
+import pyautogui
 from contextlib import suppress
 from watchdog.observers import Observer
 from watchdog.events import FileSystemEventHandler
 import logging
 
 enable_debug = False
+enable_autoscroll = True
 sort_by_date_then_patreon = False
 number_of_parallel_downloads = int(os.environ.get('TG_MAX_PARALLEL', 16))
 watch_path = r"Z:\TelegramDownloads"  # this should be your telegram download directory
@@ -139,6 +141,14 @@ async def worker(name):
         # Notify the queue that the "work item" has been processed.
         queue.task_done()
 
+async def scroller(name):
+    while True:
+        wnd = pyautogui.getWindowsWithTitle("Telegram")[0]
+        if not wnd.isActive:
+            wnd.activate()
+        pyautogui.keyDown('pagedown')
+        time.sleep(60*30) #pagedown once every 30 min
+        
 
 async def handler(update):
     if update.event_type == 'created':
@@ -168,6 +178,9 @@ observer.start()
 
 try:
     tasks = []
+    if enable_autoscroll:
+        task = loop.create_task(scroller(f'scroller'))
+        tasks.append(task)
     for i in range(number_of_parallel_downloads):
         loop = asyncio.get_event_loop()
         task = loop.create_task(worker(f'worker-{i}'))
