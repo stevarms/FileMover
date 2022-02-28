@@ -39,14 +39,16 @@ will be moved to
 1. [install python 3](https://www.python.org/downloads/)
 2. update pip `py -m pip install --upgrade pip`
 3. install the watchdog package with pip `py -m pip install watchdog`
-4. edit the script mover.py (you can just open with notepad or a code editor like vscode or notepad++)
+4. install the pyautogui package with pip `py -m pip install pyautogui`
+5. edit the script mover.py (you can just open with notepad or a code editor like vscode or notepad++)
     - set the watch_path (this should be your telegram download path)
     - set the target_path (this is where you want the mover to put the files, it will create sorted subdirectories)
-5. setup telegram to auto download 
+    - set enable_autscroller to False if you dont want the script to scroll your Telegram for you.  
+6. setup telegram to auto download 
     - settings -> advanced -> download path -> custom folder (this will be the same as watch_path above)
     - settings -> advanced -> manage local storage -> increase the total size limit & cache limit to 10GB
     - settings -> advanced -> In Groups -> increase Limit by Size to 2000MB also make sure files and photos are checked
-6. run mover.py (either by double clicking or open a cmd window and navigate to the location)
+7. run mover.py (either by double clicking or open a cmd window and navigate to the location)
 
 # Known issues
 * the multithreadding doesnt really work
